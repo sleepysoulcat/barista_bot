@@ -23,7 +23,7 @@ sobrenomes = [
 nomes_aleatorios = [f"{p} {s} 🐢" for p in primeiros_nomes for s in sobrenomes]
 
 def iniciar_troca_de_apelido(bot: discord.ext.commands.Bot):
-    @tasks.loop(seconds=15)
+    @tasks.loop(hours=24)
     async def mudar_apelido():
         await bot.wait_until_ready()
         guild = bot.get_guild(ID_SERVIDOR)
