@@ -27,8 +27,6 @@ async def on_ready():
     await tree.sync(guild=guild)
     print("✅ Comandos sincronizados.")
 
-# Inicia servidor web para manter online com UptimeRobot
-iniciar_webserver()  # Importante: chame diretamente, sem threading
+iniciar_webserver()
 
-# Inicia o bot
 bot.run(TOKEN)
