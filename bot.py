@@ -1,26 +1,34 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
+import os
 from config import TOKEN, GUILD_ID
 from comandos import registrar_comandos
 from prefixos import registrar_comandos_prefixo
+from keep_alive import iniciar_webserver  
 
-# tentando manter online
-import threading
-from keep_alive import iniciar_webserver
+# Intents
+intents = discord.Intents.default()
+intents.message_content = True
+
+
+bot = commands.Bot(command_prefix="Eli ", intents=intents)
+tree = bot.tree
 
 @bot.event
 async def on_ready():
     print(f"🤖 Bot online como {bot.user}")
-
-    # Iniciar o servidor web
-    await iniciar_webserver()
-
     guild = discord.Object(id=GUILD_ID)
+
     tree.clear_commands(guild=guild)
-    registrar_comandos(tree)
-    registrar_comandos_prefixo(bot)
+    registrar_comandos(tree)             # Slash (/)
+    registrar_comandos_prefixo(bot)      # Prefixo (!)
+
     await tree.sync(guild=guild)
     print("✅ Comandos sincronizados.")
 
+# Inicia servidor web para manter online com UptimeRobot
+iniciar_webserver()  # Importante: chame diretamente, sem threading
+
+# Inicia o bot
 bot.run(TOKEN)
