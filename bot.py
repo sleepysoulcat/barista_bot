@@ -7,6 +7,7 @@ from config import TOKEN, GUILD_ID
 from comandos import registrar_comandos
 from prefixos import registrar_comandos_prefixo
 from keep_alive import iniciar_webserver
+from apelido import iniciar_troca_de_apelido
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -22,6 +23,7 @@ async def on_ready():
     registrar_comandos_prefixo(bot)
     await tree.sync(guild=guild)
     print("✅ Comandos sincronizados.")
+    iniciar_troca_de_apelido(bot)
 
 async def main():
     await iniciar_webserver()   # Inicia o servidor web sem criar outro loop
