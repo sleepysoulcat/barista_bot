@@ -11,6 +11,7 @@ from awawa import iniciar_troca_de_apelido
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 bot = commands.Bot(command_prefix="Eli ", intents=intents)
 tree = bot.tree
 
