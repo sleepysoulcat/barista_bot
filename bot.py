@@ -7,7 +7,7 @@ from config import TOKEN, GUILD_ID
 from comandos import registrar_comandos
 from prefixos import registrar_comandos_prefixo
 from keep_alive import iniciar_webserver
-from apelido import iniciar_troca_de_apelido
+from awawa import iniciar_troca_de_apelido
 
 intents = discord.Intents.default()
 intents.message_content = True
