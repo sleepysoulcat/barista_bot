@@ -4,7 +4,7 @@ async def handle(request):
     return web.Response(text="Bot está vivo!")
 
 app = web.Application()
-app.add_routes([web.get('/', handle)])
+app.add_routes([web.get("/", handle)])
 
 async def iniciar_webserver():
     runner = web.AppRunner(app)
