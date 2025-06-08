@@ -1,12 +1,12 @@
 from aiohttp import web
+import os
 
-async def ping(request):
-    return web.Response(text="✅ Estou vivo!")
+async def handle(request):
+    return web.Response(text="Bot está vivo!")
 
-async def iniciar_webserver():
-    app = web.Application()
-    app.router.add_get("/", ping)
-    runner = web.AppRunner(app)
-    await runner.setup()
-    site = web.TCPSite(runner, port=3000)
-    await site.start()
+app = web.Application()
+app.add_routes([web.get("/", handle)])
+
+def iniciar_webserver():
+    port = int(os.environ.get("PORT", 3000))
+    web.run_app(app, port=port, handle_signals=False)
