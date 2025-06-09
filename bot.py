@@ -18,6 +18,10 @@ tree = bot.tree
 @bot.event
 async def on_ready():
     print(f"🤖 Bot online como {bot.user}")
+    await bot.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.listening, name="Café Cósmico ★ Vol. 2")
+    )
+
     guild = discord.Object(id=GUILD_ID)
     tree.clear_commands(guild=guild)
     registrar_comandos(tree)
