@@ -3,41 +3,9 @@ import random
 import json
 import os
 from discord.ext import commands
+from gifs import *
 
-# gifs
-hug_gifs = [
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671816276639804/VMnfxoeWIAk.gif?ex=684638cf&is=6844e74f&hm=00222d07afbc5006de87c0ec904cb7675f595c488305bc9c4b98f9534ecbcfba&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671819770626048/RKhPGj0y3H.gif?ex=684638d0&is=6844e750&hm=f1979205c5db0993982c8488356437e5d671e3b91a0ce220c0a696768b13941f&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671953170464828/Rg6aOvuqRar.gif?ex=684638f0&is=6844e770&hm=649678c14b4891a9a3c3c99ba87d8b7c65a77b7cd81f906dfe69eaec16e2c715&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671869162749952/cAlH4eoeRTN.gif?ex=684638dc&is=6844e75c&hm=7a2c35991c8a61c011c0bd00bba36bd82c3772c9c2d0d673dffdf4c3b2fbe5b8&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671944811348049/Rf9cnXUyBbm.gif?ex=684638ee&is=6844e76e&hm=2a452383698729c6666bd91237cf580af8c90b9f5be2b9227711cf0ab6844f0e&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671878453264424/d7GEKxdmcXF.gif?ex=684638de&is=6844e75e&hm=80f4f0229ceb4b119e459ff745f2a3df92ef6eb867329a48d13d12eca0b29efc&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671953120264222/tQsTjsDCr-h.gif?ex=684638f0&is=6844e770&hm=eb48b7a0ae6e50e13cab2d8f7a4215e7ac5e40e63a49ec82e887033db8413a6c&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671854591606815/40GtwAsAvuV.gif?ex=684638d8&is=6844e758&hm=7aa9f04ada48fdce8ed233af75d4ec6727e8e269fd81421c45b6d9eed7dc7da1&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671918869446696/jz7xK5wHTUi.gif?ex=684638e7&is=6844e767&hm=f887a728e00313043a4204aba8bb51e2bb2d90fd3e9b6d570118800a64cfeba5&",
-    "https://cdn.discordapp.com/attachments/708671169867546634/708671891900071977/f3SntdcZ96M.gif?ex=684638e1&is=6844e761&hm=ca213d5a308408dbf7c2b5583a2a831be4eff4e33ca2eeeb137a082795fcaac5&",
-]
 
-pat_gifs = [
-    "https://cdn.discordapp.com/attachments/708671684491739199/708672413545660507/LR8lKzjm1Eo.gif?ex=6846395d&is=6844e7dd&hm=0579ad48971856bcdcea9c9c5e4218e8fd98a989e4f9d778dcdccae2291c3d2a&",
-    "https://cdn.discordapp.com/attachments/708671684491739199/708672410475560970/ko9MR4Q5E3y.gif?ex=6846395d&is=6844e7dd&hm=7d36e0d0ce528eb290ebc26742ba0b4e9bfb43760e33df2d1e675097220c3688&",
-]
-
-kiss_gifs = [
-    "https://cdn.discordapp.com/attachments/708671674534330420/708672191918637086/CVVSUrcwQtH.gif?ex=68463929&is=6844e7a9&hm=48caf1fa26f09a5ada11fcd25cc97c3171123b7284fd2416ff553e96b6f8605b&",
-    "https://cdn.discordapp.com/attachments/708671674534330420/708672219282145331/TKnSC7HK_wd.gif?ex=6846392f&is=6844e7af&hm=318b7d922ab8a4990bbeeb41d55403f54bedb2da90051321c49b274cd3e0ea69&",
-    "https://cdn.discordapp.com/attachments/708671674534330420/708672190404624436/-egcN4ZQDV3.gif?ex=68463928&is=6844e7a8&hm=bd029a69eb9a76e2101e5b6fb9d2aa802f393524163ba79778695912c6e11111&",
-    "https://cdn.discordapp.com/attachments/708671674534330420/708672249380470884/WPLZxjm8Ou9.gif?ex=68463936&is=6844e7b6&hm=24e2e6d83421f8e211caafa06f905cd1e8dd9338a80470721ef1ccaa5e33bede&",
-]
-
-slap_gifs = [
-    "https://cdn.discordapp.com/attachments/713915370867654777/713938521106415675/sHnvo6dkr-p.gif?ex=6846440f&is=6844f28f&hm=8fdc68925fb8b374ac727bf3d2d8db3bdd83689df3b4b4ea2424d23e2510a990&"
-]
-
-nuzzles_gifs = [
-    "https://cdn.discordapp.com/attachments/713915167951421451/713936952138661938/qQTAY1q-loP.gif?ex=68464299&is=6844f119&hm=58e00b793f503c60b029df01dd1c55638171e5e0fbb3b6b55572988ecae2ea6c&",
-    "https://cdn.discordapp.com/attachments/713915167951421451/713936911433203753/r04M3J_gm64.gif?ex=6846428f&is=6844f10f&hm=c9a23c0b5fbf0198852a124ef6bb8eb9fd6b002d8d81bdfa5c3ea907eeee578f&",
-]
 
 # caminho json
 CONTADORES_PATH = "contadores.json"
@@ -57,9 +25,7 @@ def salvar_contadores(data):
         json.dump(data, f, indent=4)
 
 
-def registrar_comandos_prefixo(bot: commands.Bot):
-
-    async def comando_interacao(
+async def comando_interacao(
         ctx, member: discord.Member, gifs, descricao, acao_passado, tipo
     ):
         author = ctx.author
@@ -95,34 +61,144 @@ def registrar_comandos_prefixo(bot: commands.Bot):
         )
         await ctx.send(embed=embed)
 
-    # Comando hug
-    @bot.command(name="hug")
-    async def hug(ctx, member: discord.Member):
-        await comando_interacao(ctx, member, hug_gifs, "is hugging", "hugged", "hug")
+def registrar_comandos_prefixo(bot: commands.Bot):
 
-    # Comando pat
+# Comando Blush
+    @bot.command(name="blush")
+    async def blush(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, blush_gifs, "is blushing at", "blushed at", "blush")
+
+# Comando Love
+    @bot.command(name="love")
+    async def love(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, love_gifs, "is showing love to", "loved", "love")
+
+# Comando Boop
+    @bot.command(name="boop")
+    async def boop(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, boop_gifs, "boops", "booped", "boop")
+
+# Comando Lurk
+    @bot.command(name="lurk")
+    async def lurk(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, lurk_gifs, "is lurking around", "lurked", "lurk")
+
+# Comando Cheer
+    @bot.command(name="cheer")
+    async def cheer(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, cheer_gifs, "is cheering up", "cheered", "cheer")
+
+# Comando Nom
+    @bot.command(name="nom")
+    async def nom(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, nom_gifs, "noms", "nommed", "nom")
+
+# Comando Cuddle
+    @bot.command(name="cuddle")
+    async def cuddle(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, cuddle_gifs, "is cuddling", "cuddled", "cuddle")
+
+# Comando Nuzzle
+    @bot.command(name="nuzzle")
+    async def nuzzle(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, nuzzle_gifs, "is nuzzling", "nuzzled", "nuzzle")
+
+# Comando Dance
+    @bot.command(name="dance")
+    async def dance(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, dance_gifs, "is dancing with", "danced with", "dance")
+
+# Comando Pat
     @bot.command(name="pat")
     async def pat(ctx, member: discord.Member):
         await comando_interacao(ctx, member, pat_gifs, "is patting", "patted", "pat")
 
-    # Comando kiss
+# Comando Feed
+    @bot.command(name="feed")
+    async def feed(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, feed_gifs, "is feeding", "fed", "feed")
+
+# Comando Peck
+    @bot.command(name="peck")
+    async def peck(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, peck_gifs, "is pecking", "pecked", "peck")
+
+# Comando Glomp
+    @bot.command(name="glomp")
+    async def glomp(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, glomp_gifs, "is glomping", "glomped", "glomp")
+
+# Comando Poke
+    @bot.command(name="poke")
+    async def poke(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, poke_gifs, "is poking", "poked", "poke")
+
+# Comando Handhold
+    @bot.command(name="handhold")
+    async def handhold(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, handhold_gifs, "is holding hands with", "held hands with", "handhold")
+
+# Comando Pout
+    @bot.command(name="pout")
+    async def pout(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, pout_gifs, "is pouting at", "pouted at", "pout")
+
+# Comando Happy
+    @bot.command(name="happy")
+    async def happy(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, happy_gifs, "is happy with", "was happy with", "happy")
+
+# Comando Sleep
+    @bot.command(name="sleep")
+    async def sleep(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, sleep_gifs, "is sleeping next to", "slept next to", "sleep")
+
+# Comando Highfive
+    @bot.command(name="highfive")
+    async def highfive(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, highfive_gifs, "gives a high five to", "high-fived", "highfive")
+
+# Comando Thumbsup
+    @bot.command(name="thumbsup")
+    async def thumbsup(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, thumbsup_gifs, "gives a thumbs up to", "gave a thumbs up to", "thumbsup")
+
+# Comando Hug
+    @bot.command(name="hug")
+    async def hug(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, hug_gifs, "is hugging", "hugged", "hug")
+
+# Comando Tickle
+    @bot.command(name="tickle")
+    async def tickle(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, tickle_gifs, "is tickling", "tickled", "tickle")
+
+# Comando Kiss
     @bot.command(name="kiss")
     async def kiss(ctx, member: discord.Member):
         await comando_interacao(ctx, member, kiss_gifs, "is kissing", "kissed", "kiss")
 
-    # Comando slap
-    @bot.command(name="slap")
-    async def slap(ctx, member: discord.Member):
-        await comando_interacao(
-            ctx, member, slap_gifs, "is slapping", "slapped", "slap"
-        )
+# Comando Wag
+    @bot.command(name="wag")
+    async def wag(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, wag_gifs, "is wagging at", "wagged at", "wag")
 
-    # Comando nuzzles
-    @bot.command(name="nuzzle")
-    async def nuzzle(ctx, member: discord.Member):
-        await comando_interacao(
-            ctx, member, nuzzles_gifs, "is nuzzling", "nuzzled", "nuzzle"
-        )
+# Comando Laugh
+    @bot.command(name="laugh")
+    async def laugh(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, laugh_gifs, "is laughing with", "laughed with", "laugh")
+
+# Comando Wave
+    @bot.command(name="wave")
+    async def wave(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, wave_gifs, "waves at", "waved at", "wave")
+
+# Comando Lick
+    @bot.command(name="lick")
+    async def lick(ctx, member: discord.Member):
+        await comando_interacao(ctx, member, lick_gifs, "is licking", "licked", "lick")
+
+
 
     # outros comandos -----------------------
 
