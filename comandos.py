@@ -19,7 +19,7 @@ from discord.ext import commands
 import discord
 import asyncio
 
-CARTAS_CANAL_ID = 1369805936662810686  # Substitua pelo ID do canal onde as cartas serão enviadas
+CARTAS_CANAL_ID = 1382743951454507240  # Substitua pelo ID do canal onde as cartas serão enviadas
 
 def registrar_cartas_anonimas(bot: commands.Bot):
     @bot.event
