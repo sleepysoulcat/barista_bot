@@ -5,6 +5,7 @@ import asyncio
 
 from config import TOKEN, GUILD_ID
 from comandos import registrar_comandos
+from comandos import registrar_cartas_anonimas
 from prefixos import registrar_comandos_prefixo
 from keep_alive import iniciar_webserver
 from awawa import iniciar_troca_de_apelido
@@ -25,6 +26,7 @@ async def on_ready():
     guild = discord.Object(id=GUILD_ID)
     tree.clear_commands(guild=guild)
     registrar_comandos(tree)
+    registrar_cartas_anonimas(bot)
     registrar_comandos_prefixo(bot)
     await tree.sync(guild=guild)
     print("✅ Comandos sincronizados.")
