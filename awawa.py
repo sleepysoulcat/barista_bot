@@ -2,9 +2,11 @@ import discord
 from discord.ext import tasks
 import random
 
-ID_SERVIDOR = 1303533306372952084  # ID do servidor
-ID_USUARIO = 709048346706444320    # ID do usuário a ser renomeado
-ID_CANAL_AVISO = 1303533306372952087  # Canal de aviso
+ID_SERVIDOR = 1303533306372952084  # server_id
+ID_USUARIO = 709048346706444320    # user_id
+ID_CANAL_AVISO = 1303533306372952087  # alert_ch_id
+apelido_ativo = True  # I/O
+
 
 primeiros_nomes = [
     "Seu Joaquim", "Dona Lourdes", "Antônio", "Maria do Socorro", "João Batista", "Sebastião",
@@ -26,6 +28,11 @@ def iniciar_troca_de_apelido(bot: discord.ext.commands.Bot):
     @tasks.loop(hours=24)
     async def mudar_apelido():
         await bot.wait_until_ready()
+
+        if not apelido_ativo:
+            print("Troca de apelido pausada.")
+            return
+            
         guild = bot.get_guild(ID_SERVIDOR)
         canal = bot.get_channel(ID_CANAL_AVISO)
 
