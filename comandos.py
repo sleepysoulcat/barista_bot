@@ -1,3 +1,5 @@
+import discord
+import asyncio
 from discord import app_commands, Interaction, Object
 from config import GUILD_ID
 
@@ -26,12 +28,23 @@ class ApelidoControlador(app_commands.Group):
         apelido_ativo = False
         await interaction.response.send_message("ta bom parei :c.", ephemeral=True)
 
+
+
+class ApelidoControlador(app_commands.Group):
+    @app_commands.command(name="voltamudarnome", description="volta ter nomes de veio aleatorio")
+    async def parar(self, interaction: discord.Interaction):
+        if interaction.user.id != ID_USUARIO:
+            await interaction.response.send_message("você nnnnnnn.", ephemeral=True)
+            return
+
+        global apelido_ativo
+        apelido_ativo = False
+        await interaction.response.send_message("eba vou te ajudar a escolher um nome :pray:", ephemeral=True)
+
 def setup_comandos(bot):
     bot.tree.add_command(ApelidoControlador())
 
 from discord.ext import commands
-import discord
-import asyncio
 
 CARTAS_CANAL_ID = 1382743951454507240  # Substitua pelo ID do canal onde as cartas serão enviadas
 
