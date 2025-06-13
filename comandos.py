@@ -15,6 +15,7 @@ async def falar(interaction: Interaction, mensagem: str):
 
 def registrar_comandos(tree: app_commands.CommandTree):
     tree.add_command(falar, guild=Object(id=GUILD_ID))
+    tree.add_command(ApelidoControlador(), guild=Object(id=GUILD_ID))
 
 
 class ApelidoControlador(app_commands.Group):
@@ -30,7 +31,7 @@ class ApelidoControlador(app_commands.Group):
 
 
 
-class ApelidoControlador(app_commands.Group):
+class ApelidoControlador2(app_commands.Group):
     @app_commands.command(name="voltamudarnome", description="volta ter nomes de veio aleatorio")
     async def parar(self, interaction: discord.Interaction):
         if interaction.user.id != ID_USUARIO:
@@ -38,7 +39,7 @@ class ApelidoControlador(app_commands.Group):
             return
 
         global apelido_ativo
-        apelido_ativo = False
+        apelido_ativo = True
         await interaction.response.send_message("eba vou te ajudar a escolher um nome :pray:", ephemeral=True)
 
 def setup_comandos(bot):
