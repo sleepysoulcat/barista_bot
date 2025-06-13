@@ -15,6 +15,20 @@ def registrar_comandos(tree: app_commands.CommandTree):
     tree.add_command(falar, guild=Object(id=GUILD_ID))
 
 
+class ApelidoControlador(app_commands.Group):
+    @app_commands.command(name="pararnomedasilva", description="não quero maissss aaaaaaaaaaaa :c")
+    async def parar(self, interaction: discord.Interaction):
+        if interaction.user.id != ID_USUARIO:
+            await interaction.response.send_message("Você não tem permissão para usar esse comando.", ephemeral=True)
+            return
+
+        global apelido_ativo
+        apelido_ativo = False
+        await interaction.response.send_message("ta bom parei :c.", ephemeral=True)
+
+def setup_comandos(bot):
+    bot.tree.add_command(ApelidoControlador())
+
 from discord.ext import commands
 import discord
 import asyncio
