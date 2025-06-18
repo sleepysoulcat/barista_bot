@@ -219,12 +219,13 @@ def registrar_comandos_prefixo(bot: commands.Bot):
         await ctx.send(mensagem)
 
 
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
+def registrar_comandos_prefixo(bot):
+    @bot.event
+    async def on_message(message):
+        if message.author == bot.user:
+            return
 
-    if "bugs satânicos" in message.content.lower():
-        await message.channel.send("https://youtu.be/aBOW0HqIpwM")
+        if "bugs satânicos" in message.content.lower():
+            await message.channel.send("https://example.com/seu-link-aqui")
 
-    await bot.process_commands(message)
+        await bot.process_commands(message)
