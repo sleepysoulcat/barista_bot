@@ -217,15 +217,3 @@ def registrar_comandos_prefixo(bot: commands.Bot):
             return  # Silenciosamente ignora caso não possa apagar
 
         await ctx.send(mensagem)
-
-
-def registrar_comandos_prefixo(bot):
-    @bot.event
-    async def on_message(message):
-        if message.author == bot.user:
-            return
-
-        if "bugs satânicos" in message.content.lower():
-            await message.channel.send("https://youtu.be/aBOW0HqIpwM")
-
-        await bot.process_commands(message)
