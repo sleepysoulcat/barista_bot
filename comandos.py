@@ -88,7 +88,7 @@ def registrar_cartas_anonimas(bot: commands.Bot):
                 embed = discord.Embed(
                     title=f"📠 {destinatario}, você recebeu um fax anônimo",
                     description=conteudo,
-                    color=discord.Color.purple()
+                    color=discord.Color.from_str("#00b4d8")
                 )
                 await canal.send(embed=embed)
                 await message.channel.send("( ´ ω ` )  | Fax enviado!")
