@@ -65,7 +65,7 @@ def registrar_cartas_anonimas(bot: commands.Bot):
                 await message.channel.send("(¬_¬ )   | Hey, você não escreveu nada, quer enganar quem?")
                 return
 
-            await message.channel.send("( ˙꒳​˙ )  | Para quem é esse fax? {e1}")
+            await message.channel.send("( ˙꒳​˙ )  | Para quem é esse fax?")
 
             try:
                 resposta = await bot.wait_for(
@@ -91,7 +91,7 @@ def registrar_cartas_anonimas(bot: commands.Bot):
                     color=discord.Color.purple()
                 )
                 await canal.send(embed=embed)
-                await message.channel.send("( ´ ω ` )  | Fax enviado! {e2}")
+                await message.channel.send("( ´ ω ` )  | Fax enviado!")
             else:
                 await message.channel.send("(⇀‸↼‶)  | Não encontrei o canal.")
             return  # não processar como comando
