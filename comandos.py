@@ -48,6 +48,9 @@ def setup_comandos(bot):
 from discord.ext import commands
 
 CARTAS_CANAL_ID = 1382743951454507240  # Substitua pelo ID do canal onde as cartas serão enviadas
+e1 = "<:aubrey_twirl:1382754308268757122>"
+e2 = "<:comfyy:1375943688638824562>"
+
 
 def registrar_cartas_anonimas(bot: commands.Bot):
     @bot.event
@@ -62,7 +65,7 @@ def registrar_cartas_anonimas(bot: commands.Bot):
                 await message.channel.send("(¬_¬ )   | Hey, você não escreveu nada, quer enganar quem?")
                 return
 
-            await message.channel.send("( ˙꒳​˙ )  | Para quem é esse fax?")
+            await message.channel.send("( ˙꒳​˙ )  | Para quem é esse fax? {e1}")
 
             try:
                 resposta = await bot.wait_for(
@@ -71,7 +74,7 @@ def registrar_cartas_anonimas(bot: commands.Bot):
                     check=lambda m: m.author == message.author and isinstance(m.channel, discord.DMChannel)
                 )
             except asyncio.TimeoutError:
-                await message.channel.send("( ~°-°)~  | Acabou o tempo. <:aubrey_twirl:1382754308268757122>")
+                await message.channel.send("( ~°-°)~  | Acabou o tempo.")
                 return
 
             destinatario = resposta.content.strip()
@@ -88,7 +91,7 @@ def registrar_cartas_anonimas(bot: commands.Bot):
                     color=discord.Color.purple()
                 )
                 await canal.send(embed=embed)
-                await message.channel.send("( ´ ω ` )  | Fax enviado! <:comfyy:1375943688638824562>")
+                await message.channel.send("( ´ ω ` )  | Fax enviado! {e2}")
             else:
                 await message.channel.send("(⇀‸↼‶)  | Não encontrei o canal.")
             return  # não processar como comando
