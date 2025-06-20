@@ -59,10 +59,10 @@ def registrar_cartas_anonimas(bot: commands.Bot):
         if isinstance(message.channel, discord.DMChannel):
             conteudo = message.content.strip()
             if not conteudo:
-                await message.channel.send("❌ Sua carta não pode estar vazia.")
+                await message.channel.send("(¬_¬ )   | Hey, você não escreveu nada, quer enganar quem?")
                 return
 
-            await message.channel.send("✉️ Para quem é essa carta? Digite o nome ou apelido que será exibido.")
+            await message.channel.send("( ˙꒳​˙ ) Para quem é esse fax?")
 
             try:
                 resposta = await bot.wait_for(
@@ -71,26 +71,26 @@ def registrar_cartas_anonimas(bot: commands.Bot):
                     check=lambda m: m.author == message.author and isinstance(m.channel, discord.DMChannel)
                 )
             except asyncio.TimeoutError:
-                await message.channel.send("⏰ Tempo esgotado. Envie a mensagem novamente se ainda quiser enviar.")
+                await message.channel.send("( ~*-*)~  | Acabou o tempo. :aubrey_twirl:")
                 return
 
             destinatario = resposta.content.strip()
 
             if not destinatario:
-                await message.channel.send("❌ Nome inválido. A carta não foi enviada.")
+                await message.channel.send("(⇀‸↼‶)  | nome errado!")
                 return
 
             canal = bot.get_channel(CARTAS_CANAL_ID)
             if canal:
                 embed = discord.Embed(
-                    title=f"💌 {destinatario}, você recebeu uma carta anônima",
+                    title=f"📠 {destinatario}, você recebeu um fax anônimo",
                     description=conteudo,
                     color=discord.Color.purple()
                 )
                 await canal.send(embed=embed)
-                await message.channel.send("✅ Sua carta foi enviada com sucesso!")
+                await message.channel.send("( ´ ω ` )  | Fax enviado! :comfyy:")
             else:
-                await message.channel.send("❌ Não consegui encontrar o canal de destino.")
+                await message.channel.send("(⇀‸↼‶)  | Não encontrei o canal.")
             return  # não processar como comando
 
         # Permite que comandos normais funcionem
