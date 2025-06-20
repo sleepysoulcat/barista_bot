@@ -217,20 +217,20 @@ def registrar_comandos_prefixo(bot: commands.Bot):
         await ctx.send(mensagem)
 
 
-@bot.command()
-async def e(ctx, *, mensagem):
-    cargo_permitido = "Furry"
+    @bot.command()
+    async def e(ctx, *, mensagem):
+        cargo_permitido = "Furry"
 
-    if not any(role.name == cargo_permitido for role in ctx.author.roles):
-        return 
+        if not any(role.name == cargo_permitido for role in ctx.author.roles):
+            return 
 
-    try:
-        await ctx.message.delete()  
-    except discord.Forbidden:
-        return  
+        try:
+            await ctx.message.delete()  
+        except discord.Forbidden:
+            return  
 
-    embed = discord.Embed(
-        description=mensagem,
-        color=discord.Color.from_str("#00b4d8")
-    )
-    await ctx.send(embed=embed)
+        embed = discord.Embed(
+            description=mensagem,
+            color=discord.Color.from_str("#00b4d8")
+        )
+        await ctx.send(embed=embed)
