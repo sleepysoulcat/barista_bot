@@ -204,16 +204,33 @@ def registrar_comandos_prefixo(bot: commands.Bot):
 
     @bot.command()
     async def d(ctx, *, mensagem):
-    # Nome do cargo permitido
         cargo_permitido = "Furry"
 
-    # Verifica se o autor tem o cargo
         if not any(role.name == cargo_permitido for role in ctx.author.roles):
-            return  # Silenciosamente ignora quem não tem o cargo
+            return  
 
         try:
-            await ctx.message.delete()  # Apaga a mensagem do usuário
+            await ctx.message.delete() 
         except discord.Forbidden:
-            return  # Silenciosamente ignora caso não possa apagar
+            return 
 
         await ctx.send(mensagem)
+
+
+@bot.command()
+async def e(ctx, *, mensagem):
+    cargo_permitido = "Furry"
+
+    if not any(role.name == cargo_permitido for role in ctx.author.roles):
+        return 
+
+    try:
+        await ctx.message.delete()  
+    except discord.Forbidden:
+        return  
+
+    embed = discord.Embed(
+        description=mensagem,
+        color=discord.Color.from_str("#00b4d8")
+    )
+    await ctx.send(embed=embed)
